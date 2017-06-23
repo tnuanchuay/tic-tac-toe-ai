@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="assets/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap-theme.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <button id="00" class="btn btn-lg">1</button>
+            <button id="01" class="btn btn-lg">2</button>
+            <button id="02" class="btn btn-lg">3</button>
+        </div>
+        <div class="row">
+            <button id="10" class="btn btn-lg">4</button>
+            <button id="11" class="btn btn-lg">5</button>
+            <button id="12" class="btn btn-lg">6</button>
+        </div>
+        <div class="row">
+            <button id="20" class="btn btn-lg">7</button>
+            <button id="21" class="btn btn-lg">8</button>
+            <button id="22" class="btn btn-lg">9</button>
+        </div>
+    </div>
+</body>
+<script src="assets/jquery.js"></script>
+<script src="assets/bootstrap.min.js"></script>
+<script>
+    $(document).ready(() => {
+        $("button").click(function () {
+            $.post("/play", {data:this.id})
+            .then((data) => {
+                $(this).html("X")
+                console.log(data);
+                if(data == 0)
+                    $("#00").html("O")
+                if(data == 1)
+                    $("#01").html("O")
+                if(data == 2)
+                    $("#02").html("O")
+                if(data == 3)
+                    $("#10").html("O")
+                if(data == 4)
+                    $("#11").html("O")
+                if(data == 5)
+                    $("#12").html("O")
+                if(data == 6)
+                    $("#20").html("O")
+                if(data == 7)
+                    $("#21").html("O")
+                if(data == 8)
+                    $("#22").html("O")
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+        });
+    });
+
+</script>
+
+</html>
